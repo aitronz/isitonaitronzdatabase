@@ -48,7 +48,7 @@ export default function LanguageSwitcher() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "flex items-center gap-2 px-3 py-2 rounded-lg",
+          "flex items-center gap-2 px-3 py-2 rounded",
           "bg-zinc-900/50 border border-zinc-800/50 backdrop-blur-sm",
           "text-zinc-400 hover:text-white transition-all duration-200",
           "hover:bg-zinc-900/70 hover:border-zinc-700/50"
@@ -62,7 +62,7 @@ export default function LanguageSwitcher() {
       </button>
 
       {isOpen && (
-        <div className="absolute mt-2 right-0 w-44 overflow-hidden rounded-lg bg-zinc-900/95 backdrop-blur-sm border border-zinc-800/50 shadow-xl animate-fade-in">
+        <div className="absolute mt-2 right-0 w-44 overflow-hidden rounded bg-zinc-900/95 backdrop-blur-sm border border-zinc-800/50 shadow-xl animate-fade-in">
           {(Object.entries(languages)).map(([code, lang]) => {
             const LangFlag = lang.flag
             return (

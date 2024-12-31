@@ -8,11 +8,11 @@ export interface GameData {
 }
 
 interface ProcessedDownload {
-  name: string
-  url: string
-  uploadDate: string
-  fileSize?: string
-  additional_urls?: { name: string; url: string; description?: string }[]
+  sourceName: string;
+  sourceUrl?: string;
+  uploadDate: string;
+  fileSize?: string;
+  downloadUrls?: { name: string; url: string; uploadDate: string; fileSize: string}[];
 }
 
 interface Download {
@@ -144,32 +144,31 @@ async function findMatchingDownloads(
     .filter(word => word.length > 2)
     .filter(word => !['the', 'and', 'for', 'of'].includes(word));
 
-  // Find exact matches first
+  // Find downloads that match this game
   const matches = data.downloads.filter(download => {
-    const cleanTitle = download.title.toLowerCase()
-      .replace(/[^\w\s]/g, ' ')
-      .trim();
-    
-    // Try exact match first
-    if (cleanTitle === cleanGameName) return true;
-
-    // Then try word matching
+    const cleanTitle = download.title.toLowerCase().replace(/[^\w\s]/g, ' ').trim();
     return gameWords.every(word => cleanTitle.includes(word));
   });
 
-  // Sort matches by date
+  // Sort by date and take the most recent
   const sortedMatches = matches.sort((a, b) => 
     new Date(b.uploadDate).getTime() - new Date(a.uploadDate).getTime()
   );
 
+  // Return only the most recent match and additional URLs
   if (sortedMatches.length > 0) {
     const match = sortedMatches[0];
+    const downloadUrls = sortedMatches.map((download, index) => ({
+      name: download.title,
+      url: download.uris[0],
+      uploadDate: download.uploadDate,
+      fileSize: download.fileSize,
+    }));
     return [{
-      name: source.name,
-      url: match.uris[0],
+      sourceName: source.name,
       uploadDate: match.uploadDate,
       fileSize: match.fileSize,
-      additional_urls: source.additional_urls
+      downloadUrls: downloadUrls
     }];
   }
 

@@ -1,6 +1,6 @@
 export const translations = {
   en: {
-    title: "Is it on Hydra?",
+    title: "Is it on aitronz Database?",
     subtitle: "Your ultimate game search engine. Fast, reliable, and always up to date.",
     searchPlaceholder: "Search for any game...",
     features: {
@@ -17,7 +17,7 @@ export const translations = {
         description: "Always up to date"
       }
     },
-    credits: "Created by Moyase",
+    credits: "Created by aitronz",
     search: {
       loading: "Searching games",
       loadingSubtext: "This might take a moment",
@@ -40,7 +40,7 @@ export const translations = {
     },
     announcement: {
       title: "New Feature: Multiple Source Versions",
-      message: `Hello, this is Moyase! I've recently added the ability to choose different versions of sources. This update was implemented specifically for our Russian users who can't access hydralinks.cloud.
+      message: `Hello, this is aitronz! I've recently added the ability to choose different versions of sources. This update was implemented specifically for our Russian users who can't access hydralinks.cloud.
 
 If you're from Russia, please select the Russian version of the source for it to work properly with Hydra.
 
@@ -48,7 +48,7 @@ The source versions are identical but hosted on different servers. Russian users
 
 Thank you for reading!
 With love,
-Moyase`
+aitronz`
     },
     common: {
       close: 'Close',
@@ -72,7 +72,7 @@ Moyase`
         description: "Sempre atualizado"
       }
     },
-    credits: "Criado por Moyase",
+    credits: "Criado por aitronz",
     search: {
       loading: "Procurando jogos",
       loadingSubtext: "Isso pode levar um momento",
@@ -95,7 +95,7 @@ Moyase`
     },
     announcement: {
       title: "Nova Funcionalidade: Múltiplas Versões de Fontes",
-      message: `Olá, aqui é o Moyase! Recentemente, adicionei a capacidade de escolher diferentes versões das fontes. Esta atualização foi implementada especificamente para nossos usuários russos que não conseguem acessar o hydralinks.cloud.
+      message: `Olá, aqui é o aitronz! Recentemente, adicionei a capacidade de escolher diferentes versões das fontes. Esta atualização foi implementada especificamente para nossos usuários russos que não conseguem acessar o hydralinks.cloud.
 
 Se você é da Rússia, por favor, selecione a versão russa da fonte para que funcione corretamente com o Hydra.
 
@@ -103,14 +103,14 @@ As versões das fontes são idênticas, mas estão hospedadas em servidores dife
 
 Obrigado por ler!
 Com amor,
-Moyase`
+aitronz`
     },
     common: {
       close: 'Close',
     },
   },
   ru: {
-    title: "Is it on Hydra?",
+    title: "Is it on aitronz Database?",
     subtitle: "Твой универсальный поиск игр. Быстрый, надежный и всегда актуальный.",
     searchPlaceholder: "Поиск любой игры...",
     features: {
@@ -127,7 +127,7 @@ Moyase`
         description: "Всегда актуальный"
       }
     },
-    credits: "Создано Moyase",
+    credits: "Создано aitronz",
     search: {
       loading: "Поиск игр",
       loadingSubtext: "Это может занять некоторое время",
@@ -150,7 +150,7 @@ Moyase`
     },
     announcement: {
       title: "Новая функция: Разные версии источников",
-      message: `Привет, это Moyase! Недавно я добавил возможность выбора разных версий источников. Это обновление было реализовано специально для наших пользователей из России, у которых нет доступа к hydralinks.cloud.
+      message: `Привет, это aitronz! Недавно я добавил возможность выбора разных версий источников. Это обновление было реализовано специально для наших пользователей из России, у которых нет доступа к hydralinks.cloud.
 
 Если вы из России, пожалуйста, выбирайте русскую версию источника, чтобы он корректно работал с Hydra.
 
@@ -158,7 +158,7 @@ Moyase`
 
 Спасибо за внимание!
 С любовью,
-Moyase`
+aitronz`
     },
     common: {
       close: 'Закрыть',

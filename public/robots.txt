@@ -1,8 +1,8 @@
-# https://isitonhydra.xyz robots.txt
+# https://isitonaitronzdatabase.vercel.app robots.txt
 
 User-agent: *
 Allow: /
 Disallow: /private/
 
 # Sitemap
-Sitemap: https://isitonhydra.xyz/sitemap.xml 
+Sitemap: https://isitonaitronzdatabase.vercel.app/sitemap.xml 

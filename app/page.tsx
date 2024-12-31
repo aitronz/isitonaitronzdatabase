@@ -38,13 +38,11 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-4 relative">
       {/* Language Switcher */}
       <div className="absolute top-4 right-4">
-        <LanguageSwitcher />
       </div>
 
       {/* Announcement - Left side fixed with better positioning */}
       <div className="fixed left-6 top-1/2 -translate-y-1/2 w-[22rem] z-40 hidden lg:block pointer-events-none">
         <div className="pointer-events-auto">
-          <Announcement />
         </div>
       </div>
 
@@ -52,7 +50,6 @@ export default function Home() {
       <div className="w-full max-w-2xl space-y-8">
         {/* Mobile Announcement */}
         <div className="lg:hidden w-full mb-8">
-          <Announcement />
         </div>
 
         <h1 className="text-4xl sm:text-5xl font-bold text-white text-center">
@@ -117,33 +114,6 @@ export default function Home() {
               {t('credits')}
             </p>
             <div className="flex items-center gap-4">
-              <a 
-                href="https://discord.gg/hydralaunchercommunity" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-zinc-400 hover:text-purple-400 transition-colors"
-                aria-label="Join our Discord"
-              >
-                <MessageSquare className="w-5 h-5" />
-              </a>
-              <a 
-                href="https://github.com/zxcsix-zxc/isitonhydra" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-zinc-400 hover:text-purple-400 transition-colors"
-                aria-label="View source on GitHub"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a 
-                href="https://hydralinks.cloud" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-zinc-400 hover:text-purple-400 transition-colors"
-                aria-label="Visit Hydra Links"
-              >
-                <Globe className="w-5 h-5" />
-              </a>
             </div>
           </div>
         </div>

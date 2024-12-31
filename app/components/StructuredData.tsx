@@ -2,11 +2,11 @@ export default function StructuredData() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: 'Is it on Hydra?',
+    name: 'Is it on aitronz Database?',
     applicationCategory: 'GameSearchEngine',
     operatingSystem: 'Any',
     description: 'Fast and reliable game search engine with advanced filtering capabilities',
-    url: 'https://isitonhydra.xyz',
+    url: 'https://isitonaitronzdatabase.vercel.app',
     offers: {
       '@type': 'Offer',
       price: '0',

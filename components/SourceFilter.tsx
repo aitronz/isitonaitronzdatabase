@@ -73,13 +73,13 @@ export default function SourceFilter({ selectedSources, onChange, isMainPage }: 
             <div className="flex gap-2 mb-2">
               <button
                 onClick={selectAll}
-                className="flex-1 px-3 py-1.5 text-xs rounded-lg bg-zinc-800/50 text-zinc-400 hover:text-white transition-colors"
+                className="flex-1 px-3 py-1.5 text-xs rounded bg-zinc-800/50 text-zinc-400 hover:text-white transition-colors"
               >
                 {t('filter.selectAll')}
               </button>
               <button
                 onClick={clearAll}
-                className="flex-1 px-3 py-1.5 text-xs rounded-lg bg-zinc-800/50 text-zinc-400 hover:text-white transition-colors"
+                className="flex-1 px-3 py-1.5 text-xs rounded bg-zinc-800/50 text-zinc-400 hover:text-white transition-colors"
               >
                 {t('filter.clearAll')}
               </button>
@@ -89,7 +89,7 @@ export default function SourceFilter({ selectedSources, onChange, isMainPage }: 
                 <button
                   key={source.name}
                   onClick={() => toggleSource(source.name)}
-                  className="flex items-center gap-2 w-full p-2 hover:bg-zinc-800/50 rounded-lg text-sm text-left transition-colors"
+                  className="flex items-center gap-2 w-full p-2 hover:bg-zinc-800/50 rounded text-sm text-left transition-colors"
                 >
                   <div className={cn(
                     'w-4 h-4 rounded border flex items-center justify-center',

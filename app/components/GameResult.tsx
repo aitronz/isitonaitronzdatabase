@@ -4,20 +4,19 @@ import { useState, useEffect } from 'react'
 import { formatDate } from '../lib/utils'
 import UrlSelectionPopup from './UrlSelectionPopup'
 import { useLanguage } from '../context/LanguageContext'
-import { Calendar, Copy, ExternalLink } from 'lucide-react'
+import { Download, Copy, ExternalLink } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { jsonSources } from '../config/sources'
 import Image from 'next/image'
 
 interface Source {
-  name: string
-  url: string
+  sourceName: string
   uploadDate: string
-  fileSize?: string
-  additional_urls?: Array<{
-    name: string
-    url: string
-    description?: string
+  downloadUrls?: Array<{
+    name: string; 
+    url: string; 
+    uploadDate: string; 
+    fileSize: string
   }>
 }
 
@@ -51,7 +50,6 @@ export default function GameResult({ name, image, sources, genres = [] }: GameRe
     genresLength: genresList.length
   });
   
-  const [copiedIndex, setCopiedIndex] = useState<number | null>(null)
   const [showUrlPopup, setShowUrlPopup] = useState(false)
   const [selectedSource, setSelectedSource] = useState<Source | null>(null)
   const { t, language } = useLanguage()
@@ -143,9 +141,6 @@ export default function GameResult({ name, image, sources, genres = [] }: GameRe
 
           <div className="divide-y divide-zinc-800/30">
             {sources.map((source, index) => {
-              const hasAdditionalUrls = source.additional_urls && source.additional_urls.length > 0;
-              const sourceUrl = getSourceUrl(source.name);
-              
               return (
                 <div
                   key={index}
@@ -156,25 +151,23 @@ export default function GameResult({ name, image, sources, genres = [] }: GameRe
                 >
                   <div className="flex-1 min-w-0 flex items-center gap-6">
                     <span className="text-white/90 font-medium truncate min-w-[160px] text-sm">
-                      {source.name}
+                      {source.sourceName}
                     </span>
 
                     <div className="hidden sm:flex items-center gap-1.5 text-zinc-500 text-xs">
-                      <Calendar className="w-3.5 h-3.5" />
+                    <Download className="w-3.5 h-3.5" />
                       <span className="tabular-nums">
-                        {formatDate(source.uploadDate, language)}
+                      {source.downloadUrls?.length}
                       </span>
                     </div>
                   </div>
-
-                  {hasAdditionalUrls ? (
                     <button
                       onClick={() => {
                         setSelectedSource(source);
                         setShowUrlPopup(true);
                       }}
                       className={cn(
-                        "flex items-center gap-1.5 px-2 py-1 rounded-lg",
+                        "flex items-center gap-1.5 px-2 py-1 rounded",
                         "bg-zinc-800/50 text-zinc-400 opacity-0 group-hover/item:opacity-100",
                         "hover:bg-purple-500/20 hover:text-purple-300 transition-all duration-200 text-xs font-medium"
                       )}
@@ -182,30 +175,6 @@ export default function GameResult({ name, image, sources, genres = [] }: GameRe
                       <ExternalLink className="w-3.5 h-3.5" />
                       <span>{t('gameResult.select')}</span>
                     </button>
-                  ) : (
-                    <div className="relative flex-shrink-0 ml-8">
-                      <button
-                        onClick={async () => {
-                          await navigator.clipboard.writeText(sourceUrl);
-                          setCopiedIndex(index);
-                          setTimeout(() => setCopiedIndex(null), 2000);
-                        }}
-                        className={cn(
-                          "flex items-center gap-1.5 px-2 py-1 rounded-lg",
-                          "bg-zinc-800/50 text-zinc-400 opacity-0 group-hover/item:opacity-100",
-                          "hover:text-white transition-all duration-200 text-xs font-medium"
-                        )}
-                      >
-                        <Copy className="w-3.5 h-3.5" />
-                        <span>{t('gameResult.copy')}</span>
-                      </button>
-                      {copiedIndex === index && (
-                        <span className="absolute -top-8 right-0 px-2 py-1 bg-green-500/90 text-xs rounded-md text-white whitespace-nowrap animate-fade-in">
-                          {t('gameResult.copied')}
-                        </span>
-                      )}
-                    </div>
-                  )}
                 </div>
               );
             })}
@@ -216,13 +185,11 @@ export default function GameResult({ name, image, sources, genres = [] }: GameRe
       <UrlSelectionPopup
         isOpen={showUrlPopup}
         onClose={() => setShowUrlPopup(false)}
-        options={selectedSource?.additional_urls || []}
+        options={selectedSource?.downloadUrls || []}
         onSelect={(url) => {
           navigator.clipboard.writeText(url);
           if (selectedSource) {
-            setCopiedIndex(sources.findIndex(s => s.name === selectedSource.name));
             setTimeout(() => {
-              setCopiedIndex(null);
               setShowUrlPopup(false);
             }, 2000);
           }

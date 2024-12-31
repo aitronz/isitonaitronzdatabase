@@ -10,14 +10,14 @@ import Navbar from './components/Navbar'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Is it on Hydra?',
+  title: 'Is it on aitronz Database?',
   description: 'Fast and reliable game search engine. Find games across multiple sources, with advanced filtering and sorting capabilities. Always up-to-date with the latest releases.',
-  keywords: 'game search, hydra launcher, game downloads, game finder, hydralinks, hydra, hydra sources, hydra fonte, hydra launcher sources, hydra launcher fonte, Esta no Hydra, is it on hydra?, isitonhydra?, moyase, Hydra Launcher Discord',
+  keywords: 'game search, hydra launcher, game downloads, game finder, hydralinks, hydra, hydra sources, hydra fonte, hydra launcher sources, hydra launcher fonte, Esta no Hydra, Is it on aitronz Database?, isitonhydra?, aitronz, Hydra Launcher Discord',
   openGraph: {
-    title: 'Is it on Hydra?',
+    title: 'Is it on aitronz Database?',
     description: 'Fast and reliable game search engine with advanced filtering capabilities',
-    url: 'https://isitonhydra.xyz',
-    siteName: 'Is it on Hydra?',
+    url: 'https://isitonaitronzdatabase.vercel.app',
+    siteName: 'Is it on aitronz Database?',
     images: [
       {
         url: '/preview.png',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Is it on Hydra? - Game Search Engine',
+    title: 'Is it on aitronz Database? - Game Search Engine',
     description: 'Fast and reliable game search engine with advanced filtering capabilities',
     images: ['/preview.png'],
   },
@@ -59,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://isitonhydra.xyz" />
+        <link rel="canonical" href="https://isitonaitronzdatabase.vercel.app" />
         <StructuredData />
       </head>
       <body className={inter.className}>
