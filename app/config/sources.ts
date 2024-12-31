@@ -40,10 +40,6 @@ export const jsonSources = [
     url: 'https://davidkazumi.github.io/fontekazumi.json'
   },
   {
-    name: 'HydraSources(Russian)',
-    url: 'https://hydrasources.su/hydra.json'
-  },
-  {
     name: 'SteamRip(Direct download)',
     url: 'https://hydralinks.cloud/sources/steamrip.json',
   },

@@ -1,8 +1,6 @@
 # Is it on aitronz Database?
 
 <div align="center">
-  <img src="public/preview.png" alt="Is it on Hydra Preview" width="600">
-  
   A modern game search engine built with Next.js 14 that aggregates game downloads from multiple sources. This project is a fork of [Is it on Hydra?](https://github.com/Moyasee/isitonhydra) and has been modified to directly provide the download links for those who prefer not to install Hydra.
   
   [Live Demo](https://isitonaitronzdatabase.vercel.app) | [Join Discord](https://discord.gg/hydralaunchercommunity)
