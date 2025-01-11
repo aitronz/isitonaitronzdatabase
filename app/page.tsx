@@ -7,10 +7,9 @@ import { useState } from 'react'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { Github, MessageSquare, Globe } from 'lucide-react'
 import { useLanguage } from './context/LanguageContext'
-import LanguageSwitcher from './components/LanguageSwitcher'
-import Announcement from './components/Announcement'
 import GameResult from './components/GameResult'
 import { searchGames, GameData } from './lib/searchGames'
+import LanguageSwitcher from './components/LanguageSwitcher'
 
 export default function Home() {
   const router = useRouter()
@@ -22,36 +21,22 @@ export default function Home() {
     if (query.trim()) {
       router.push(`/search?q=${encodeURIComponent(query)}`)
       const searchResults = await searchGames(query, selectedSources)
-      
-      // Log before setting state
-      console.log('Before setting state:', searchResults.map(r => ({
-        name: r.name,
-        genres: r.genres,
-        isArray: Array.isArray(r.genres)
-      })));
-
-      setResults(searchResults);
+      setResults(searchResults)
     }
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 relative">
-      {/* Language Switcher */}
-      <div className="absolute top-4 right-4">
-      </div>
-
-      {/* Announcement - Left side fixed with better positioning */}
-      <div className="fixed left-6 top-1/2 -translate-y-1/2 w-[22rem] z-40 hidden lg:block pointer-events-none">
-        <div className="pointer-events-auto">
+    <main className="flex min-h-screen flex-col items-center p-4 relative">
+      {/* Language Switcher - Adjusted for mobile */}
+      <div className="w-full max-w-2xl mb-8">
+        <div className="flex justify-end">
+          <div className="bg-zinc-900/50 backdrop-blur-sm rounded-lg p-1">
+          </div>
         </div>
       </div>
 
-      {/* Main Content - Centered without margin */}
+      {/* Main Content - Removed justify-center to prevent overlap */}
       <div className="w-full max-w-2xl space-y-8">
-        {/* Mobile Announcement */}
-        <div className="lg:hidden w-full mb-8">
-        </div>
-
         <h1 className="text-4xl sm:text-5xl font-bold text-white text-center">
           {t('title')}
         </h1>
