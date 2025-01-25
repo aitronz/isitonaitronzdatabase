@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useLanguage } from '../context/LanguageContext'
-import { Globe } from 'lucide-react'
+import { Globe, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { US, BR, RU } from 'country-flag-icons/react/3x2'
 
@@ -48,48 +48,64 @@ export default function LanguageSwitcher() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "flex items-center gap-2 px-3 py-2 rounded",
-          "bg-zinc-900/50 border border-zinc-800/50 backdrop-blur-sm",
-          "text-zinc-400 hover:text-white transition-all duration-200",
-          "hover:bg-zinc-900/70 hover:border-zinc-700/50"
+          "flex items-center gap-2.5 px-4 py-2.5",
+          "bg-zinc-900/30 backdrop-blur-sm",
+          "border border-zinc-800/30",
+          "rounded-xl",
+          "text-zinc-400 hover:text-white",
+          "transition-all duration-300",
+          "hover:border-zinc-700/30",
+          "group"
         )}
       >
-        <Globe className="w-4 h-4" />
-        <div className="flex items-center gap-2">
-          <Flag className="w-4 h-4 rounded-sm shadow-sm" />
-          <span className="text-sm">{selectedLang.name}</span>
-        </div>
+        <Flag className="w-5 h-5 rounded-sm shadow-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+        <ChevronDown className={cn(
+          "w-4 h-4 text-zinc-500 group-hover:text-zinc-300",
+          "transition-transform duration-300",
+          isOpen && "rotate-180"
+        )} />
       </button>
 
       {isOpen && (
-        <div className="absolute mt-2 right-0 w-44 overflow-hidden rounded bg-zinc-900/95 backdrop-blur-sm border border-zinc-800/50 shadow-xl animate-fade-in">
-          {(Object.entries(languages)).map(([code, lang]) => {
-            const LangFlag = lang.flag
-            return (
-              <button
-                key={code}
-                onClick={() => {
-                  setLanguage(code as keyof typeof languages)
-                  setIsOpen(false)
-                }}
-                className={cn(
-                  "w-full px-3 py-2 text-left text-sm transition-all duration-200",
-                  "flex items-center",
-                  code === language
-                    ? "bg-purple-500/20 text-purple-300"
-                    : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
-                )}
-              >
-                <div className="flex items-center gap-2.5 min-w-0">
+        <div className={cn(
+          "absolute mt-2 right-0",
+          "w-52 overflow-hidden rounded-xl",
+          "bg-zinc-900/95 backdrop-blur-sm",
+          "border border-zinc-800/50",
+          "shadow-xl shadow-purple-500/5",
+          "animate-fade-in"
+        )}>
+          <div className="p-1">
+            {(Object.entries(languages)).map(([code, lang]) => {
+              const LangFlag = lang.flag
+              return (
+                <button
+                  key={code}
+                  onClick={() => {
+                    setLanguage(code as keyof typeof languages)
+                    setIsOpen(false)
+                  }}
+                  className={cn(
+                    "w-full px-3 py-2.5 rounded-lg",
+                    "text-left text-sm",
+                    "flex items-center gap-3",
+                    "transition-all duration-200",
+                    code === language
+                      ? "bg-purple-500/20 text-purple-300"
+                      : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+                  )}
+                >
                   <LangFlag className="w-5 h-5 rounded-sm shadow-sm" />
-                  <span className="truncate">{lang.name}</span>
-                  <span className="text-xs text-zinc-500 truncate ml-1.5">
-                    {lang.label}
-                  </span>
-                </div>
-              </button>
-            )
-          })}
+                  <div className="flex flex-col">
+                    <span className="font-medium">{lang.name}</span>
+                    <span className="text-xs opacity-60">
+                      {lang.label}
+                    </span>
+                  </div>
+                </button>
+              )
+            })}
+          </div>
         </div>
       )}
     </div>

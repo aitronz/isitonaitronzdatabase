@@ -92,7 +92,18 @@ export default function GameResult({ name, image, sources, genres = [] }: GameRe
 
   return (
     <>
-      <div className="relative overflow-hidden rounded-xl bg-zinc-900/50 border border-zinc-800/50 transition-all duration-300 hover:border-zinc-700/50 hover:shadow-xl hover:shadow-purple-500/5">
+      <div className={cn(
+        "game-card",
+        "relative overflow-hidden rounded-xl",
+        "bg-zinc-900/30 backdrop-blur-sm",
+        "border border-zinc-800/30",
+        "transition-all duration-300",
+        "hover:border-zinc-700/50",
+        "hover:shadow-xl hover:shadow-purple-500/5",
+        "animate-card-pulse",
+        "group"
+      )}>
+        {/* Background Image */}
         {imageUrl && !imageError && (
           <div className="absolute inset-0">
             <Image
@@ -117,29 +128,27 @@ export default function GameResult({ name, image, sources, genres = [] }: GameRe
           </div>
         )}
 
-        <div className="relative z-10 flex flex-col h-full backdrop-blur-sm">
-          <h2 className="px-5 py-4 text-xl font-bold text-white/90 sm:text-2xl border-b border-zinc-800/50 flex items-center justify-between">
-            <div className="flex flex-col">
-              <span className="truncate">{name}</span>
-              {genresList.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-1">
-                  {genresList.map((genre, index) => (
-                    <span 
-                      key={index}
-                      className="text-xs font-normal text-zinc-400 bg-zinc-800/50 px-2 py-0.5 rounded-full"
-                    >
-                      {genre}
-                    </span>
-                  ))}
-                </div>
-              )}
+        {/* Content */}
+        <div className="relative p-6 space-y-4">
+          {/* Title and Genres */}
+          <div>
+            <h3 className="text-xl font-medium text-white mb-2">
+              {name}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {genres.map((genre, index) => (
+                <span
+                  key={index}
+                  className="px-2.5 py-1 text-xs rounded-md bg-zinc-800/50 text-zinc-400"
+                >
+                  {genre}
+                </span>
+              ))}
             </div>
-            <span className="text-xs font-normal text-zinc-500">
-              {sources.length} {sources.length === 1 ? 'source' : 'sources'}
-            </span>
-          </h2>
+          </div>
 
-          <div className="divide-y divide-zinc-800/30">
+          {/* Sources List */}
+          <div className="space-y-1">
             {sources.map((source, index) => {
               return (
                 <div

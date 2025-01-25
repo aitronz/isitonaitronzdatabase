@@ -20,3 +20,144 @@ body {
 .animate-fade-in {
   animation: fade-in 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Animated border effect */
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(168, 85, 247, 0.4); /* purple-500 with opacity */
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.1);
+  }
+  50% {
+    border-color: rgba(168, 85, 247, 0.8);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  }
+}
+
+.animate-border-glow {
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+/* Lightning effect for focus */
+.search-input-container {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.search-input-container::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(
+    90deg,
+    rgba(168, 85, 247, 0.3),
+    rgba(168, 85, 247, 0.1),
+    rgba(168, 85, 247, 0.3)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.search-input-container:focus-within::before {
+  opacity: 1;
+}
+
+/* Add this after your existing animations */
+
+@keyframes borderPulse {
+  0% {
+    border-color: rgba(168, 85, 247, 0.1);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.05);
+  }
+  50% {
+    border-color: rgba(168, 85, 247, 0.2);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.1);
+  }
+  100% {
+    border-color: rgba(168, 85, 247, 0.1);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.05);
+  }
+}
+
+.animate-border-pulse {
+  animation: borderPulse 3s ease-in-out infinite;
+}
+
+/* Add after your existing animations */
+
+@keyframes cardBorderPulse {
+  0% {
+    border-color: rgba(168, 85, 247, 0.1);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.03);
+  }
+  50% {
+    border-color: rgba(168, 85, 247, 0.2);
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.08);
+  }
+  100% {
+    border-color: rgba(168, 85, 247, 0.1);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.03);
+  }
+}
+
+.animate-card-pulse {
+  animation: cardBorderPulse 4s ease-in-out infinite;
+}
+
+.game-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.2),
+    rgba(168, 85, 247, 0.05),
+    rgba(168, 85, 247, 0.2)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.game-card:hover::before {
+  opacity: 1;
+}
+
+/* Add these new animations */
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 30px rgba(168, 85, 247, 0.2); }
+  50% { text-shadow: 0 0 30px rgba(168, 85, 247, 0.4); }
+}
+
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-title-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    #fff 0%,
+    rgba(168, 85, 247, 0.8) 50%,
+    #fff 100%
+  );
+  background-size: 200% auto;
+  animation: gradientText 8s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}

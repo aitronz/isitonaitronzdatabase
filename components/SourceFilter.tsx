@@ -47,11 +47,13 @@ export default function SourceFilter({ selectedSources, onChange, isMainPage }: 
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          'flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200',
+          'flex items-center gap-2 px-6 py-4 rounded-xl text-sm font-medium',
+          'transition-all duration-300',
+          'backdrop-blur-sm border',
           isMainPage 
-            ? 'bg-zinc-900/50 backdrop-blur-sm text-zinc-400 hover:text-white'
-            : 'bg-zinc-900/50 text-zinc-400 hover:text-white border border-zinc-800/50 hover:bg-zinc-800/50',
-          selectedSources.length > 0 && 'text-purple-400 border-purple-500/20'
+            ? 'bg-zinc-900/30 text-zinc-400 hover:text-white border-zinc-800/30 hover:border-zinc-700/30'
+            : 'bg-zinc-900/30 text-zinc-400 hover:text-white border-zinc-800/30 hover:border-zinc-700/30',
+          selectedSources.length > 0 && 'text-purple-400 border-purple-500/20 hover:border-purple-500/40'
         )}
       >
         <Filter className="w-4 h-4" />
@@ -59,40 +61,67 @@ export default function SourceFilter({ selectedSources, onChange, isMainPage }: 
         <span className="text-xs">
           {selectedSources.length > 0 && `(${selectedSources.length})`}
         </span>
-        <ChevronDown className="w-4 h-4" />
+        <ChevronDown className={cn(
+          "w-4 h-4 transition-transform duration-200",
+          isOpen && "transform rotate-180"
+        )} />
       </button>
 
       {isOpen && (
         <div className={cn(
-          "absolute mt-2 rounded-xl bg-zinc-900/95 backdrop-blur-sm border border-zinc-800/50 shadow-xl",
-          isMainPage ? "right-0" : "right-0",
-          "w-64",
-          "max-h-[80vh] overflow-y-auto"
+          "absolute mt-2 rounded-xl",
+          "bg-zinc-900/95 backdrop-blur-sm",
+          "border border-zinc-800/50",
+          "shadow-xl shadow-purple-500/5",
+          "transform opacity-100 scale-100",
+          "transition-all duration-200",
+          isMainPage ? "-right-2" : "-right-2",
+          "w-72",
+          "animate-fade-in"
         )}>
-          <div className="p-2">
-            <div className="flex gap-2 mb-2">
+          <div className="p-3">
+            <div className="flex gap-2 mb-3">
               <button
                 onClick={selectAll}
-                className="flex-1 px-3 py-1.5 text-xs rounded bg-zinc-800/50 text-zinc-400 hover:text-white transition-colors"
+                className={cn(
+                  "flex-1 px-4 py-2",
+                  "text-xs font-medium rounded-lg",
+                  "bg-zinc-800/50 text-zinc-400",
+                  "hover:bg-purple-500/10 hover:text-purple-400",
+                  "transition-all duration-200"
+                )}
               >
                 {t('filter.selectAll')}
               </button>
               <button
                 onClick={clearAll}
-                className="flex-1 px-3 py-1.5 text-xs rounded bg-zinc-800/50 text-zinc-400 hover:text-white transition-colors"
+                className={cn(
+                  "flex-1 px-4 py-2",
+                  "text-xs font-medium rounded-lg",
+                  "bg-zinc-800/50 text-zinc-400",
+                  "hover:bg-purple-500/10 hover:text-purple-400",
+                  "transition-all duration-200"
+                )}
               >
                 {t('filter.clearAll')}
               </button>
             </div>
-            <div className="max-h-64 overflow-y-auto">
+            <div className="max-h-[60vh] overflow-y-auto pr-1 space-y-1">
               {jsonSources.map((source) => (
                 <button
                   key={source.name}
                   onClick={() => toggleSource(source.name)}
-                  className="flex items-center gap-2 w-full p-2 hover:bg-zinc-800/50 rounded text-sm text-left transition-colors"
+                  className={cn(
+                    "flex items-center gap-3 w-full p-3",
+                    "hover:bg-zinc-800/50 rounded-lg",
+                    "text-sm text-left",
+                    "transition-all duration-200"
+                  )}
                 >
                   <div className={cn(
-                    'w-4 h-4 rounded border flex items-center justify-center',
+                    'w-4 h-4 rounded-md border',
+                    'flex items-center justify-center',
+                    'transition-all duration-200',
                     selectedSources.includes(source.name)
                       ? 'bg-purple-500 border-purple-500'
                       : 'border-zinc-700'
@@ -102,8 +131,10 @@ export default function SourceFilter({ selectedSources, onChange, isMainPage }: 
                     )}
                   </div>
                   <span className={cn(
-                    'text-zinc-400',
-                    selectedSources.includes(source.name) && 'text-white'
+                    'transition-colors duration-200',
+                    selectedSources.includes(source.name)
+                      ? 'text-white'
+                      : 'text-zinc-400'
                   )}>
                     {source.name}
                   </span>
