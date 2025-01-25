@@ -139,7 +139,7 @@ export default function GameResult({ name, image, sources, genres = [] }: GameRe
               {genres.map((genre, index) => (
                 <span
                   key={index}
-                  className="px-2.5 py-1 text-xs rounded-md bg-zinc-800/50 text-zinc-400"
+                  className="px-2.5 py-1 text-xs rounded bg-zinc-800/50 text-zinc-400"
                 >
                   {genre}
                 </span>
